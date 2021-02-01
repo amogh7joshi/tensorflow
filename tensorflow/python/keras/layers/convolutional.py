@@ -90,12 +90,13 @@ class Conv(Layer):
       separately with `filters / groups` filters. The output is the
       concatenation of all the `groups` results along the channel axis.
       Input channels and `filters` must both be divisible by `groups`.
-    activation: Activation function to use.
-      If you don't specify anything, no activation is applied.
-    use_bias: Boolean, whether the layer uses a bias.
-    kernel_initializer: An initializer for the convolution kernel.
-    bias_initializer: An initializer for the bias vector. If None, the default
-      initializer will be used.
+    activation: Which activation function to use.
+      If no activation is specified, no activation is applied.
+    use_bias: A boolean, whether the layer should use a bias.
+    kernel_initializer: The initializer for the convolution kernel. If None, the
+      default initializer (glorot_uniform) will be used.
+    bias_initializer: The initializer for the bias vector. If None, the default
+      initializer (zeros) will be used.
     kernel_regularizer: Optional regularizer for the convolution kernel.
     bias_regularizer: Optional regularizer for the bias vector.
     activity_regularizer: Optional regularizer function for the output.
@@ -386,8 +387,7 @@ class Conv1D(Conv):
   with the layer input over a single spatial (or temporal) dimension
   to produce a tensor of outputs.
   If `use_bias` is True, a bias vector is created and added to the outputs.
-  Finally, if `activation` is not `None`,
-  it is applied to the outputs as well.
+  Finally, if an `activation` is provided, it is applied to the outputs as well.
 
   When using this layer as the first layer in a model,
   provide an `input_shape` argument
